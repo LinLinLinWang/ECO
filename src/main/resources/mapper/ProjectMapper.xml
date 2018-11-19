@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.niit.dao.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.niit.entity.Project" >
+    <id column="PId" property="pid" jdbcType="INTEGER" />
+    <result column="UPhone" property="uphone" jdbcType="VARCHAR" />
+    <result column="PName" property="pname" jdbcType="VARCHAR" />
+    <result column="PDesc" property="pdesc" jdbcType="VARCHAR" />
+    <result column="PSD" property="psd" jdbcType="TIMESTAMP" />
+    <result column="PNM" property="pnm" jdbcType="INTEGER" />
+    <result column="PCategoryId" property="pcategoryid" jdbcType="INTEGER" />
+    <result column="PRemark" property="premark" jdbcType="VARCHAR" />
+    <result column="PState" property="pstate" jdbcType="INTEGER" />
+    <result column="PWeight" property="pweight" jdbcType="DECIMAL" />
+    <result column="PPrice" property="pprice" jdbcType="DECIMAL" />
+    <result column="PBrand" property="pbrand" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PId, UPhone, PName, PDesc, PSD, PNM, PCategoryId, PRemark, PState, PWeight, PPrice, 
+    PBrand
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where PId = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from project
+    where PId = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.niit.entity.Project" >
+    insert into project (PId, UPhone, PName, 
+      PDesc, PSD, PNM, 
+      PCategoryId, PRemark, PState, 
+      PWeight, PPrice, PBrand
+      )
+    values (#{pid,jdbcType=INTEGER}, #{uphone,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, 
+      #{pdesc,jdbcType=VARCHAR}, #{psd,jdbcType=TIMESTAMP}, #{pnm,jdbcType=INTEGER}, 
+      #{pcategoryid,jdbcType=INTEGER}, #{premark,jdbcType=VARCHAR}, #{pstate,jdbcType=INTEGER}, 
+      #{pweight,jdbcType=DECIMAL}, #{pprice,jdbcType=DECIMAL}, #{pbrand,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.niit.entity.Project" >
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        PId,
+      </if>
+      <if test="uphone != null" >
+        UPhone,
+      </if>
+      <if test="pname != null" >
+        PName,
+      </if>
+      <if test="pdesc != null" >
+        PDesc,
+      </if>
+      <if test="psd != null" >
+        PSD,
+      </if>
+      <if test="pnm != null" >
+        PNM,
+      </if>
+      <if test="pcategoryid != null" >
+        PCategoryId,
+      </if>
+      <if test="premark != null" >
+        PRemark,
+      </if>
+      <if test="pstate != null" >
+        PState,
+      </if>
+      <if test="pweight != null" >
+        PWeight,
+      </if>
+      <if test="pprice != null" >
+        PPrice,
+      </if>
+      <if test="pbrand != null" >
+        PBrand,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="uphone != null" >
+        #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pdesc != null" >
+        #{pdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="psd != null" >
+        #{psd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pnm != null" >
+        #{pnm,jdbcType=INTEGER},
+      </if>
+      <if test="pcategoryid != null" >
+        #{pcategoryid,jdbcType=INTEGER},
+      </if>
+      <if test="premark != null" >
+        #{premark,jdbcType=VARCHAR},
+      </if>
+      <if test="pstate != null" >
+        #{pstate,jdbcType=INTEGER},
+      </if>
+      <if test="pweight != null" >
+        #{pweight,jdbcType=DECIMAL},
+      </if>
+      <if test="pprice != null" >
+        #{pprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pbrand != null" >
+        #{pbrand,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.niit.entity.Project" >
+    update project
+    <set >
+      <if test="uphone != null" >
+        UPhone = #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="pname != null" >
+        PName = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pdesc != null" >
+        PDesc = #{pdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="psd != null" >
+        PSD = #{psd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pnm != null" >
+        PNM = #{pnm,jdbcType=INTEGER},
+      </if>
+      <if test="pcategoryid != null" >
+        PCategoryId = #{pcategoryid,jdbcType=INTEGER},
+      </if>
+      <if test="premark != null" >
+        PRemark = #{premark,jdbcType=VARCHAR},
+      </if>
+      <if test="pstate != null" >
+        PState = #{pstate,jdbcType=INTEGER},
+      </if>
+      <if test="pweight != null" >
+        PWeight = #{pweight,jdbcType=DECIMAL},
+      </if>
+      <if test="pprice != null" >
+        PPrice = #{pprice,jdbcType=DECIMAL},
+      </if>
+      <if test="pbrand != null" >
+        PBrand = #{pbrand,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PId = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.niit.entity.Project" >
+    update project
+    set UPhone = #{uphone,jdbcType=VARCHAR},
+      PName = #{pname,jdbcType=VARCHAR},
+      PDesc = #{pdesc,jdbcType=VARCHAR},
+      PSD = #{psd,jdbcType=TIMESTAMP},
+      PNM = #{pnm,jdbcType=INTEGER},
+      PCategoryId = #{pcategoryid,jdbcType=INTEGER},
+      PRemark = #{premark,jdbcType=VARCHAR},
+      PState = #{pstate,jdbcType=INTEGER},
+      PWeight = #{pweight,jdbcType=DECIMAL},
+      PPrice = #{pprice,jdbcType=DECIMAL},
+      PBrand = #{pbrand,jdbcType=VARCHAR}
+    where PId = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>
