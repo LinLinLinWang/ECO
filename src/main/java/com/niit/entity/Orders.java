@@ -1,7 +1,7 @@
 package com.niit.entity;
 
 import java.util.Date;
-
+//订单实体类
 public class Orders {
     private Integer orderid;
 
